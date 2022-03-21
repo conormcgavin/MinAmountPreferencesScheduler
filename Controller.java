@@ -21,7 +21,6 @@ public class Controller {
 	}
 	
 	public void removeEmployee(Employee e) {
-		// this could cause huge glitches due to index stuff ?
 		System.out.printf("Removing Employee %s\n...", e.name);
 		this.employees.remove(e);
 	}
@@ -37,7 +36,6 @@ public class Controller {
 		for (int i = 0; i<employees.size(); i++) {
 			Employee e = employees.get(i);
 			ArrayList<Preference> prefs = e.getPreferences();
-			System.out.println(prefs.get(i).order);
 			for (Preference pref : prefs) {
 				scheduler.addPreference(i, pref);
 			}
@@ -52,7 +50,7 @@ public class Controller {
 			
 			for (int i=0; i<e.preferences.size(); i++) {
 				Preference pref = e.preferences.get(i);
-				if (scheduler.preferences.get(employee)[i].getValue() == 1) {
+				if (scheduler.finalSolution.getIntVal(scheduler.preferences.get(employee)[i]) == 1) {
 					pref.granted = true;
 					e.preferences_received[i] += 1;
 				}
@@ -74,9 +72,16 @@ public class Controller {
 	
 	public void completeWeek() {
 		recordHistoryOfCurrentWeek();
+		updateBalance();
 		System.out.println("********************************************************************************\n");
 	}
 	
+	public void updateBalance() {
+		for (int i=0; i<employees.size(); i++) {
+			employees.get(i).balance += scheduler.finalSolution.getIntVal(scheduler.total_preferences[i]) - scheduler.finalSolution.getIntVal(scheduler.minPrefs);
+		}
+	}
+
 	public void newWeek() {
 		System.out.println("Starting preparation for a new week...");
 		week += 1;

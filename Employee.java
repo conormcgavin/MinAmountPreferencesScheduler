@@ -10,10 +10,13 @@ public class Employee {
 	ArrayList<Preference> preferences;
 	ArrayList<Preference> preference_history;
 	
+	
+	
 	String name;
 	int min_days_per_week;
 	int max_days_per_week;
 	int skill_level;
+	int balance;
 	
 	public Employee(String name, int min_days, int max_days, int skill_level) {
 		this.preferences = new ArrayList<Preference>();
@@ -26,6 +29,8 @@ public class Employee {
 		this.min_days_per_week = min_days;
 		this.max_days_per_week = max_days;
 		this.skill_level = skill_level;
+		
+		this.balance = 0;
 	}
 
 	
@@ -57,6 +62,8 @@ public class Employee {
 		for (Preference preference : preference_history) {
 			System.out.println("Week: " + preference.week + ", Order: " + preference.order + ", Granted: " + preference.granted);
 		}
+		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("Balance: " + balance);
 		System.out.println("********************************************************************************\n");
 	}
 	

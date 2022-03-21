@@ -15,7 +15,7 @@ public class Main {
 		Controller c = new Controller();
 		c.addEmployee(e1);
 		c.addEmployee(e2);
-		//c.addEmployee(e3);
+		c.addEmployee(e3);
 		c.addEmployee(e4);
 		/*
 		c.addEmployee(e4);
@@ -31,11 +31,11 @@ public class Main {
 		e1.addPreference(c.week, 2,  3);
 		
 		e2.addPreference(c.week, 0,  1);
-		e2.addPreference(c.week, 1,  2);
-		e2.addPreference(c.week, 2,  3);
+		e2.addPreference(c.week, 2,  2);
+		e2.addPreference(c.week, 4,  3);
 		
-		e3.addPreference(c.week, 3,  1);
-		e3.addPreference(c.week, 4,  2);
+		e3.addPreference(c.week, 0,  1);
+		e3.addPreference(c.week, 3,  2);
 		e3.addPreference(c.week, 5,  3);
 		
 		e4.addPreference(c.week, 0,  1);
@@ -87,13 +87,10 @@ public class Main {
 		c.completeWeek();
 		c.newWeek();
 		
+		
 		e1.printStats();
 		e2.printStats();
+		e3.printStats();
 		e4.printStats();
 	}
 }
-
-/* --Notes about this model--
- * If one person can only have one preference granted, then everyone is penalised.
- */
-

@@ -11,6 +11,7 @@ public class Preference {
 	public Preference(int week, int day, int order, boolean modelAsHard) {
 		this.week = week;
 		this.day = day;
+		this.order = order;
 		this.granted = false;
 		this.modelAsHard = modelAsHard;
 	}
